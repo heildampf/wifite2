@@ -156,9 +156,9 @@ class Airmon(object):
                 iface = line.split(' ')[0]
                 if '\t' in iface:
                     iface = iface.split('\t')[0]
-            if 'Mode:Monitor' in line and iface not in interfaces:
-                iface = 'wlan1mon'
-                interfaces.append(iface)
+                    iface = 'wlan1mon'
+            if iface not in interfaces:
+                    interfaces.append(iface)
         return interfaces
 
 
