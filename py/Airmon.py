@@ -86,7 +86,7 @@ class Airmon(object):
                 if ']' in mon_iface:
                     mon_iface = mon_iface.split(']')[1]
                 if ')' in mon_iface:
-                    mon_iface = mon_iface.split(')')[0]
+                    mon_iface = mon_iface.split(')')[1]
                 break
 
         if mon_iface == None:
