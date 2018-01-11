@@ -174,12 +174,15 @@ class Airmon(object):
                 2. There is only one wireles interface (automatically selected).
             Puts selected device into Monitor Mode.
         '''
-        Color.p("{+} ask1 {G}" % iface)   
-        Color.p("{+} ask2 {G}" % interfaces)   
+ 
         Airmon.terminate_conflicting_processes()
-
+     
         Color.pl('\n{+} looking for {C}wireless interfaces{W}')
         mon_ifaces = Airmon.get_interfaces_in_monitor_mode()
+
+        Color.p("{+} ask1 {G}" % iface)   
+        Color.p("{+} ask2 {G}" % interfaces)  
+        
         mon_count = len(mon_ifaces)
         if mon_count == 1:
             # Assume we're using the device already in montior mode
