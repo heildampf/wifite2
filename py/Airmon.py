@@ -86,7 +86,7 @@ class Airmon(object):
                 if ']' in mon_iface:
                     mon_iface = mon_iface.split(']')[1]
                 if ')' in mon_iface:
-                    mon_iface = mon_iface.split(')')[1]
+                    mon_iface = mon_iface.split(')')[0]
                 break
 
         if mon_iface == None:
@@ -98,6 +98,7 @@ class Airmon(object):
         # Assert that there is an interface in monitor mode
         if len(mon_ifaces) == 0:
             Color.pl("{R}failed{W}")
+            
             raise Exception("iwconfig does not see any interfaces in Mode:Monitor")
 
         # Assert that the interface enabled by airmon-ng is in monitor mode
@@ -156,6 +157,7 @@ class Airmon(object):
                 if '\t' in iface:
                     iface = iface.split('\t')[0]
             if 'Mode:Monitor' in line and iface not in interfaces:
+                iface = 'wlan1mon'
                 interfaces.append(iface)
         return interfaces
 
