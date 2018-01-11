@@ -149,7 +149,8 @@ class Airmon(object):
                 List of interface names that are in monitor mode
         '''
         interfaces = []
-        print ("leer:" interfaces)
+        Color.p("{+} leer {G}" % interfaces)   
+    
         (out, err) = Process.call("iwconfig")
         for line in out.split("\n"):
             if len(line) == 0: continue
@@ -159,7 +160,7 @@ class Airmon(object):
                     iface = iface.split('\t')[0]
                     iface = "wlan1mon"
             if iface not in interfaces:
-                    print("iface" iface)
+                    Color.p("{+} leer2 {G}" % iface)   
                     interfaces.append(iface)
         return interfaces
 
@@ -173,8 +174,8 @@ class Airmon(object):
                 2. There is only one wireles interface (automatically selected).
             Puts selected device into Monitor Mode.
         '''
-        print ("ask1:"iface)
-        print ("ask2:"interfaces")
+        Color.p("{+} ask1 {G}" % iface)   
+        Color.p("{+} ask2 {G}" % interfaces)   
         Airmon.terminate_conflicting_processes()
 
         Color.pl('\n{+} looking for {C}wireless interfaces{W}')
